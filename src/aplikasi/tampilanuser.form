@@ -71,7 +71,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="back" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="txtrefresh" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -98,7 +98,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="back" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
@@ -146,7 +146,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnhapusActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="back">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="33" type="rgb"/>
@@ -160,7 +160,7 @@
                 <Property name="borderPainted" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton3">

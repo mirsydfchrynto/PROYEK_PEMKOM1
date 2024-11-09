@@ -30,3 +30,72 @@
 [03/11/2024 20:38:31 WIB]  Penambahan produk kondom berhasil 
 [03/11/2024 20:39:20 WIB]  Perubahan produk kondom berhasil 
 [03/11/2024 20:39:42 WIB] user kondom berhasil dihapus 
+[08/11/2024 22:59:4 WIB] Login gagal - Username: admin (Username/Password tidak valid)
+[08/11/2024 22:59:12 WIB] Login berhasil - Username: admin (Level: admin)
+[08/11/2024 23:19:14 WIB] Login berhasil - Username: admin (Level: admin)
+[08/11/2024 23:34:17 WIB] Login berhasil - Username: admin (Level: admin)
+[08/11/2024 23:34:46 WIB] Login berhasil - Username: admin (Level: admin)
+[08/11/2024 23:38:26 WIB] Login berhasil - Username: admin (Level: admin)
+[08/11/2024 23:50:46 WIB] Login gagal - Username: admin (Username/Password tidak valid)
+[08/11/2024 23:50:50 WIB] Login berhasil - Username: admin (Level: admin)
+[08/11/2024 23:53:52 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 0:2:56 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 0:7:27 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 0:8:20 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 0:9:27 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 0:10:46 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 0:14:28 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 0:23:59 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 0:25:9 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 0:26:57 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 0:27:33 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 0:28:15 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 0:31:17 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 0:36:8 WIB] Login gagal - Username: admin (Username/Password tidak valid)
+[09/11/2024 0:36:13 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 1:17:31 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 1:20:2 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 1:21:24 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 1:21:53 WIB] Login gagal - Username: admon (Username/Password tidak valid)
+[09/11/2024 1:22:5 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 1:22:51 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 1:26:40 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 1:43:19 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 1:44:12 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 2:4:53 WIB] Error pada proses login - Username: admin\ - Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'admin'' at line 1
+[09/11/2024 2:4:54 WIB] Error pada proses login - Username: admin\ - Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'admin'' at line 1
+[09/11/2024 2:5:2 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 12:6:44 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 12:12:48 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 12:17:27 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 12:18:48 WIB] Error pada proses login - Username: admin - Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''admin\'' at line 1
+[09/11/2024 12:18:48 WIB] Error pada proses login - Username: admin - Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''admin\'' at line 1
+[09/11/2024 12:18:49 WIB] Error pada proses login - Username: admin - Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''admin\'' at line 1
+[09/11/2024 12:18:50 WIB] Error pada proses login - Username: admin - Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''admin\'' at line 1
+[09/11/2024 12:18:52 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 12:43:40 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 12:44:43 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 12:46:18 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 12:47:43 WIB]  Perubahan user ryan berhasil 
+[09/11/2024 12:47:53 WIB] Login berhasil - Username: ryan (Level: admin)
+[09/11/2024 12:57:12 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 13:5:22 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 13:7:31 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 13:8:31 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 13:12:40 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 13:13:37 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 13:14:56 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 13:16:30 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 14:10:10 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 14:10:46 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 14:12:58 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 14:13:58 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 14:15:0 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 14:15:46 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 14:16:14 WIB]  user bahtiar berhasil dihapus 
+[09/11/2024 14:19:7 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 14:19:23 WIB] Produk mamahh berhasil dihapus 
+[09/11/2024 14:19:32 WIB] Produk fatah berhasil dihapus 
+[09/11/2024 14:19:44 WIB] Produk mouse berhasil dihapus 
+[09/11/2024 14:19:47 WIB] Produk mrshaaa berhasil dihapus 
+[09/11/2024 14:20:7 WIB] Login berhasil - Username: ryan (Level: admin)

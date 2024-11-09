@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 /**
  *
@@ -20,6 +21,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -46,17 +48,11 @@ public class Login extends javax.swing.JFrame {
         txtpassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipady = 65;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel1.add(jLabel1, gridBagConstraints);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hm.png"))); // NOI18N
 
         jPanel3.setBackground(new java.awt.Color(51, 153, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(400, 500));
@@ -156,25 +152,26 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(ButtonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 6;
-        gridBagConstraints.ipady = 111;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 6, 0, 0);
-        jPanel1.add(jPanel3, gridBagConstraints);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(6, 6, 6)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(jPanel1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -243,8 +240,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
 
-    private void login() {
-        String user = txtusername.getText();
+    public  void login() {
+        String  user = txtusername.getText();
         String pass = new String(txtpassword.getPassword());
         try {
             Connection c = koneksi.Go();
@@ -261,11 +258,18 @@ public class Login extends javax.swing.JFrame {
                 us = r.getString("username");
                 ps = r.getString("password");
                 lv = r.getString("level");
+                String alamat = r.getString("alamat"); // Ambil alamat
+                String telepon = r.getString("telepon"); // Ambil telepon
+                String email = r.getString("email"); // Ambil email
+
                 up.setId(id);
                 up.setNama(nm);
-                up.setUsername(user);
-                up.setPassword(pass);
-                up.setLevel(lv); 
+                up.setUsername(us);
+                up.setPassword(ps);
+                up.setLevel(lv);
+                up.setAlamat(alamat); // Set alamat
+                up.setTelepon(telepon); // Set telepon
+                up.setEmail(email); // Set email 
                 
                 status++;
             }

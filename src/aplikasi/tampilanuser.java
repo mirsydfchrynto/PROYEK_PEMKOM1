@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,12 +19,19 @@ import javax.swing.table.DefaultTableModel;
  * @author HP
  */
 public class tampilanuser extends javax.swing.JFrame {
+    userprofile pr; // Menyimpan objek userprofile
 
-    /**
-     * Creates new form 
-     */
+    // Konstruktor tanpa argumen
     public tampilanuser() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+    }
+
+    // Konstruktor dengan argumen userprofile
+    public tampilanuser(userprofile pr) {
+        initComponents();
+        this.pr = pr; // Simpan objek userprofile
         viewData("");
     }
 
@@ -39,7 +47,7 @@ public class tampilanuser extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         btnhapus = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        back = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -65,13 +73,13 @@ public class tampilanuser extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(51, 153, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/undo.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        back.setBackground(new java.awt.Color(51, 153, 255));
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/undo.png"))); // NOI18N
+        back.setBorder(null);
+        back.setBorderPainted(false);
+        back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                backActionPerformed(evt);
             }
         });
 
@@ -114,7 +122,7 @@ public class tampilanuser extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(txtrefresh)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -137,7 +145,7 @@ public class tampilanuser extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -238,13 +246,15 @@ public class tampilanuser extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnhapusActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false); 
+
         halamanadmin ha = new halamanadmin();
+        ha.updateUser(this.pr); // Pastikan Anda menyimpan objek userprofile di tampilan user
         ha.setVisible(true);
+        this.dispose();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_backActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         tambahdata T = new tambahdata(this, true);
@@ -332,8 +342,8 @@ public class tampilanuser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton back;
     private javax.swing.JButton btnhapus;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

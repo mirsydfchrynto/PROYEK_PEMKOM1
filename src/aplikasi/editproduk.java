@@ -38,6 +38,7 @@ private String SP; // Stock Produk
     public editproduk(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
         viewCategory();
         viewSupplier();
     }

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,14 +20,20 @@ import javax.swing.table.DefaultTableModel;
  * @author HP
  */
 public class tampilanproduk extends javax.swing.JFrame {
-    
-
+    userprofile pr;
 
     /**
      * Creates new form 
      */
     public tampilanproduk() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+    }
+    
+    public tampilanproduk(userprofile pr) {
+        initComponents();
+        this.pr = pr; // Simpan objek userprofile
         viewdataproduk("");
     }
 
@@ -239,9 +246,10 @@ public class tampilanproduk extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:);
-        this.setVisible(false);
         halamanadmin ha = new halamanadmin();
+        ha.updateUser(this.pr); // Pastikan Anda menyimpan objek userprofile di tampilan user
         ha.setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 

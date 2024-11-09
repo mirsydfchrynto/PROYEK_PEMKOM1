@@ -29,6 +29,7 @@ public class tambahproduk extends javax.swing.JDialog {
     public tambahproduk(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
         
         liatkategori();
         liatsupplier();
