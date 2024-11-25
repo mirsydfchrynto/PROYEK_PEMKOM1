@@ -99,3 +99,64 @@
 [09/11/2024 14:19:44 WIB] Produk mouse berhasil dihapus 
 [09/11/2024 14:19:47 WIB] Produk mrshaaa berhasil dihapus 
 [09/11/2024 14:20:7 WIB] Login berhasil - Username: ryan (Level: admin)
+[09/11/2024 14:24:54 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 14:26:35 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 14:27:6 WIB] Login berhasil - Username: admin (Level: admin)
+[09/11/2024 14:28:2 WIB] Login berhasil - Username: admin (Level: admin)
+[12/11/2024 16:19:8 WIB] Login berhasil - Username: admin (Level: admin)
+[12/11/2024 16:19:31 WIB]  Penambahan user fsdfs berhasil 
+[12/11/2024 16:19:43 WIB]  Perubahan user fsdfswdawd berhasil 
+[12/11/2024 16:19:52 WIB]  user fsdfswdawd berhasil dihapus 
+[12/11/2024 16:20:51 WIB]  Penambahan produk es teh berhasil 
+[12/11/2024 16:20:59 WIB]  Perubahan produk es teh sosro berhasil 
+[12/11/2024 16:21:5 WIB] Produk es teh sosro berhasil dihapus 
+[12/11/2024 16:47:16 WIB] Login berhasil - Username: admin (Level: admin)
+[12/11/2024 16:47:55 WIB]  Penambahan user srfsefe berhasil 
+[12/11/2024 16:48:18 WIB]  Perubahan user kirsyasd berhasil 
+[12/11/2024 16:48:25 WIB]  user kirsyasd berhasil dihapus 
+[12/11/2024 16:49:23 WIB]  Penambahan produk esteh sosro berhasil 
+[12/11/2024 16:49:33 WIB]  Perubahan produk esteh sosro berhasil 
+[12/11/2024 16:49:41 WIB] Produk esteh sosro berhasil dihapus 
+[12/11/2024 16:54:11 WIB] Login berhasil - Username: admin (Level: admin)
+[12/11/2024 16:54:51 WIB]  Penambahan user aedaw berhasil 
+[12/11/2024 16:55:0 WIB]  Perubahan user wdwadwd berhasil 
+[12/11/2024 16:55:10 WIB]  user wdwadwd berhasil dihapus 
+[12/11/2024 16:56:1 WIB]  Penambahan produk esteh berhasil 
+[12/11/2024 16:56:13 WIB]  Perubahan produk esteh berhasil 
+[12/11/2024 16:56:21 WIB] Produk esteh berhasil dihapus 
+[12/11/2024 16:58:13 WIB] Login berhasil - Username: admin (Level: admin)
+[12/11/2024 16:58:46 WIB]  Penambahan user dawdawd berhasil 
+[12/11/2024 16:58:52 WIB]  Perubahan user dawdawd berhasil 
+[12/11/2024 16:59:1 WIB]  user dawdawd berhasil dihapus 
+[12/11/2024 16:59:54 WIB]  Penambahan produk esteh berhasil 
+[12/11/2024 17:0:2 WIB]  Perubahan produk esteh berhasil 
+[12/11/2024 17:0:8 WIB] Produk esteh berhasil dihapus 
+[12/11/2024 17:2:35 WIB] Login berhasil - Username: admin (Level: admin)
+[12/11/2024 17:3:7 WIB]  Penambahan user dawdwa berhasil 
+[12/11/2024 17:3:13 WIB]  Perubahan user dawdwa berhasil 
+[12/11/2024 17:3:19 WIB]  user dawdwa berhasil dihapus 
+[12/11/2024 17:3:57 WIB]  Penambahan produk esteh berhasil 
+[12/11/2024 17:4:6 WIB]  Perubahan produk esteh berhasil 
+[12/11/2024 17:4:12 WIB] Produk esteh berhasil dihapus 
+[24/11/2024 22:42:4 WIB] Login gagal - Username: admin (Username/Password tidak valid)
+[24/11/2024 22:42:41 WIB] Login berhasil - Username: admin (Level: admin)
+[24/11/2024 22:46:31 WIB] Login berhasil - Username: admin (Level: admin)
+[24/11/2024 22:48:6 WIB] Login berhasil - Username: admin (Level: admin)
+[24/11/2024 22:50:3 WIB] Login berhasil - Username: admin (Level: admin)
+[24/11/2024 22:50:58 WIB]  Penambahan user rahardian berhasil 
+[24/11/2024 22:52:15 WIB]  Perubahan user rahar berhasil 
+[24/11/2024 22:55:0 WIB] Login berhasil - Username: admin (Level: admin)
+[24/11/2024 23:1:30 WIB] Login gagal - Username: admin (Username/Password tidak valid)
+[24/11/2024 23:1:35 WIB] Login berhasil - Username: admin (Level: admin)
+[24/11/2024 23:4:12 WIB] Login berhasil - Username: admin (Level: admin)
+[24/11/2024 23:5:17 WIB] Login berhasil - Username: admin (Level: admin)
+[24/11/2024 23:9:31 WIB] Login berhasil - Username: admin (Level: admin)
+[24/11/2024 23:10:25 WIB] Login berhasil - Username: admin (Level: admin)
+[24/11/2024 23:12:1 WIB]  Penambahan produk Kamera Canon berhasil 
+[25/11/2024 13:57:18 WIB] Login berhasil - Username: admin (Level: admin)
+[25/11/2024 13:58:34 WIB]  Penambahan produk cardigan berhasil 
+[25/11/2024 13:58:52 WIB]  Perubahan produk Kamera Canon berhasil 
+[25/11/2024 13:59:46 WIB]  Penambahan produk dad berhasil 
+[25/11/2024 13:59:54 WIB] Produk dad berhasil dihapus 
+[25/11/2024 14:2:52 WIB] Login berhasil - Username: kasir (Level: kasir)
+[25/11/2024 14:4:13 WIB] Login berhasil - Username: kasir (Level: kasir)

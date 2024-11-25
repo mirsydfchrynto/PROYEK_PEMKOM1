@@ -27,7 +27,7 @@ public class koneksi {
             //System.out.println("Sukses terhubung");
             return c;
         } catch (SQLException e) {
-            //System.err.println("GAGAL terhubung\n"+e.getMessage());
+            System.err.println("GAGAL terhubung\n"+e.getMessage());
         }
         
         return null;

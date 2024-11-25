@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 ;
@@ -25,14 +26,17 @@ public class tambahproduk extends javax.swing.JDialog {
 
     /**
      * Creates new form 
+     * @param parent
+     * @param modal
      */
     public tambahproduk(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         
-        liatkategori();
-        liatsupplier();
+        viewCategory("product_category", ktproduk);
+        viewCategory("supplier", supplier);
+        generateCode();
     }
 
     /**
@@ -65,7 +69,7 @@ public class tambahproduk extends javax.swing.JDialog {
         txtstock = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
-        txtKode = new javax.swing.JTextField();
+        txtkode = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -191,11 +195,8 @@ public class tambahproduk extends javax.swing.JDialog {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("TAMBAH DATA PRODUK");
 
-        txtKode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtKodeActionPerformed(evt);
-            }
-        });
+        txtkode.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtkode.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -204,15 +205,14 @@ public class tambahproduk extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(44, 44, 44)
-                            .addComponent(txtKode))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(31, 31, 31)
-                            .addComponent(nmproduk, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel1))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nmproduk, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                            .addComponent(txtkode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(btnbatal)
@@ -254,8 +254,8 @@ public class tambahproduk extends javax.swing.JDialog {
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtKode, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(txtkode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -357,7 +357,7 @@ public class tambahproduk extends javax.swing.JDialog {
                     + "VALUES (?,?,?,?,?,?,?,?)";
             //System.out.println(Q);
             PreparedStatement ps = K.prepareStatement(Q);
-            ps.setString(1, txtKode.getText());
+            ps.setString(1, txtkode.getText());
             ps.setString(2, name);
             ps.setString(3, gmbar.getText());
             String[] X = ktproduk.getSelectedItem().toString().split("-");
@@ -415,10 +415,6 @@ public class tambahproduk extends javax.swing.JDialog {
         number(evt); 
     }//GEN-LAST:event_txtstockKeyTyped
 
-    private void txtKodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKodeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtKodeActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -447,17 +443,15 @@ public class tambahproduk extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                tambahproduk dialog = new tambahproduk(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            tambahproduk dialog = new tambahproduk(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 
@@ -480,42 +474,59 @@ public class tambahproduk extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> ktproduk;
     private javax.swing.JTextField nmproduk;
     private javax.swing.JComboBox<String> supplier;
-    private javax.swing.JTextField txtKode;
     private javax.swing.JTextField txtbeli;
     private javax.swing.JTextField txtjual;
+    private javax.swing.JLabel txtkode;
     private javax.swing.JTextField txtstock;
     // End of variables declaration//GEN-END:variables
-
-    private void liatkategori(){
-        try {
-            Connection K = koneksi.Go();
+private void viewCategory(String tableName, JComboBox cmb){
+    try {
+        cmb.removeAllItems();
+        Connection K = koneksi.Go();
             Statement S = K.createStatement();
-            String Q = "SELECT id,name FROM product_category";
+            String Q = "SELECT * FROM "+tableName;
             ResultSet R = S.executeQuery(Q);
-            ktproduk.removeAllItems();
+//            int n = 1;
             while (R.next()) {                 
-                int id = R.getInt("id");
+                int id = R.getInt("id");                 	 	 	 	 	 	 	 	
                 String name = R.getString("name");
-                ktproduk.addItem(id+"-"+name);
-            } 
-        } catch (SQLException e) {
-        }
+//                String desc = R.getString("description");
+                cmb.addItem(id+"-"+name);                 
+            }
+    } catch (SQLException e) {
+        System.err.println("ErrorCode: 1123"+e.getMessage());
     }
-    
-    private void liatsupplier(){
+}
+
+    private void generateCode() {
         try {
             Connection K = koneksi.Go();
-            Statement S = K.createStatement();
-            String Q = "SELECT id,name FROM supplier";
-            ResultSet R = S.executeQuery(Q);
-            supplier.removeAllItems();
-            while (R.next()) {                 
-                int id = R.getInt("id");
-                String name = R.getString("name");
-                supplier.addItem(id+"-"+name);
-            } 
-        } catch (SQLException e) {
+            String Q = "SELECT product_code AS kode FROM products ORDER BY id DESC LIMIT 1;";
+            Statement ST = K.createStatement();
+            ResultSet R = ST.executeQuery(Q);
+            String kode = "";
+            while (R.next()) {                
+                kode = R.getString("kode");
+            }
+            
+            int P = Integer.parseInt(kode.substring(1));
+            String newCode = "";
+            if(P < 10){
+                newCode = "S0000"+(P+1);
+            }else if(P>9 && P < 100){
+                newCode = "S000"+(P+1);
+            }else if(P>99 && P < 1000){
+                newCode = "S00"+(P+1);
+            }else if(P>999 && P < 10000){
+                newCode = "S0"+(P+1);
+            }else if(P>9999 && P < 10000){
+                newCode = "S"+(P+1);
+            }
+            txtkode.setText(newCode); 
+            
+        } catch (NumberFormatException | SQLException e) {
         }
+    
     }
 
     private void number(KeyEvent evt) {
@@ -524,6 +535,5 @@ public class tambahproduk extends javax.swing.JDialog {
             evt.consume();
         }
     }
-
 }
 

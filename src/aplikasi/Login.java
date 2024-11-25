@@ -294,7 +294,9 @@ public class Login extends javax.swing.JFrame {
             } else {
                 // Login gagal
                 fungsi.savelog("Login gagal - Username: " + user + " (Username/Password tidak valid)");
-                JOptionPane.showMessageDialog(this, "GAGAL Login\n" + "Username/Password tidak valid");
+                JOptionPane.showMessageDialog(this, """
+                                                    GAGAL Login
+                                                    Username/Password tidak valid""");
                 txtpassword.requestFocus();
             }
 
