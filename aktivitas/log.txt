@@ -163,3 +163,8 @@
 [29/11/2024 16:35:33 WIB] Login berhasil - Username: kasir (Level: kasir)
 [29/11/2024 16:51:57 WIB] Login berhasil - Username: kasir (Level: kasir)
 [29/11/2024 16:57:13 WIB] Login berhasil - Username: kasir (Level: kasir)
+[30/11/2024 7:5:8 WIB] Login berhasil - Username: kasir (Level: kasir)
+[30/11/2024 8:22:19 WIB] Login gagal - Username: kasir (Username/Password tidak valid)
+[30/11/2024 8:22:25 WIB] Login berhasil - Username: kasir (Level: kasir)
+[30/11/2024 8:31:19 WIB] Login berhasil - Username: kasir (Level: kasir)
+[30/11/2024 8:33:54 WIB] Login berhasil - Username: kasir (Level: kasir)

@@ -2,12 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package aplikasi;
+package aplikasi.kasir;
 
+import aplikasi.koneksi;
+import aplikasi.userprofile;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -24,7 +28,12 @@ public class halamankasir extends javax.swing.JFrame {
     /**
      * Creates new form KasirPage
      */
-    public halamankasir() {
+    public halamankasir(userprofile P) {
+        initComponents();
+        this.p = p;
+    }
+    
+     public halamankasir() {
         initComponents();
     }
 
@@ -55,7 +64,6 @@ public class halamankasir extends javax.swing.JFrame {
         tblCart = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 500));
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -259,14 +267,14 @@ public class halamankasir extends javax.swing.JFrame {
                 boolean ada = false;
                 int QTY = 0;
                 int baris = 0;
-                if (row > 0) {
-                    for (int i = 0; i < row; i++) {
-                        int id_produk = Integer.parseInt(tblCart.getValueAt(i, 0).toString());
-                        if (id_produk == id) {
-                            ada = true;
-                            baris = i;
-                            QTY = Integer.parseInt(tblCart.getValueAt(i, 2).toString()) + 1;
-                            break;
+                if (row > 0) { 
+                for (int i = 0; i < row; i++) { 
+                    int id_produk = Integer.parseInt(tblCart.getValueAt(i, 0).toString()); 
+                    if (id_produk == id) { 
+                        ada = true; 
+                        baris = i; 
+                        QTY = Integer.parseInt(tblCart.getValueAt(i, 2).toString()) + 1; 
+                        break; 
                         }
                     }
                     if (ada) {
@@ -305,7 +313,9 @@ public class halamankasir extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUangBayarKeyReleased
 
     private void tombolCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCheckoutActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:  
+        checkout();
+
     }//GEN-LAST:event_tombolCheckoutActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -422,4 +432,53 @@ public class halamankasir extends javax.swing.JFrame {
             }
         }
     }
+    
+    
+    
+    private void checkout(){
+        if (tblCart.getRowCount() == 0) {
+         JOptionPane.showMessageDialog(this, "Keranjang belanja kosong!");
+        return;
+    }
+
+        // Menghitung total harga
+        double totalHarga = 0;
+        DefaultTableModel modelNota = new DefaultTableModel();
+        modelNota.addColumn("ID");
+        modelNota.addColumn("Nama Produk");
+        modelNota.addColumn("Qty");
+        modelNota.addColumn("Harga");
+
+        for (int i = 0; i < tblCart.getRowCount(); i++) {
+            double harga = Double.parseDouble(tblCart.getValueAt(i, 3).toString());
+            double qty = Double.parseDouble(tblCart.getValueAt(i, 2).toString());
+            totalHarga += harga * qty;
+
+            // Menambahkan data ke model nota
+            modelNota.addRow(new Object[]{
+                tblCart.getValueAt(i, 0), // ID
+                tblCart.getValueAt(i, 1), // Nama Produk
+                qty,                       // Qty
+                harga                      // Harga
+            });
+        }
+
+        // Membuat instance dari JDialog nota
+        nota notaDialog = new nota(this, true);
+
+        // Mengisi data pada komponen nota
+        notaDialog.tgl.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date())); // Tanggal
+        notaDialog.nonota.setText("NO-" + System.currentTimeMillis()); // Nomor Nota
+        notaDialog.kasir.setText("Kasir: " + p.getNama()); // Nama Kasir
+        notaDialog.total.setText("Rp " + (long) totalHarga); // Total Harga
+
+        // Mengisi JTable di nota
+        notaDialog.tabelnota.setModel(modelNota); // Mengatur model JTable
+
+        // Menampilkan JDialog
+        notaDialog.setVisible(p, true);
+        }
+    
+    
+    
 }

@@ -2,20 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package aplikasi;
+package aplikasi.kasir;
+
+import aplikasi.userprofile;
 
 /**
  *
  * @author HP
  */
 public class nota extends javax.swing.JDialog {
+    // Variabel untuk JTable
+    userprofile p;
+    public javax.swing.JTable tableNota;
 
-    /**
-     * Creates new form nota
-     */
     public nota(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        // Inisialisasi JTable jika belum dilakukan
+        tableNota = new javax.swing.JTable();
+        // Tambahkan JTable ke JScrollPane atau layout yang sesuai
+        jScrollPane1.setViewportView(tableNota); // Misalnya Anda menggunakan JScrollPane
     }
 
     /**
@@ -35,15 +42,15 @@ public class nota extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        tgl = new javax.swing.JLabel();
+        nonota = new javax.swing.JLabel();
+        kasir = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        total = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelnota = new javax.swing.JTable();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -57,7 +64,6 @@ public class nota extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(300, 398));
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -110,7 +116,7 @@ public class nota extends javax.swing.JDialog {
         gridBagConstraints.ipady = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 6, 0, 29);
-        jPanel3.add(jLabel5, gridBagConstraints);
+        jPanel3.add(tgl, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -118,7 +124,7 @@ public class nota extends javax.swing.JDialog {
         gridBagConstraints.ipady = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 29);
-        jPanel3.add(jLabel6, gridBagConstraints);
+        jPanel3.add(nonota, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -126,7 +132,7 @@ public class nota extends javax.swing.JDialog {
         gridBagConstraints.ipady = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 6, 14, 29);
-        jPanel3.add(jLabel7, gridBagConstraints);
+        jPanel3.add(kasir, gridBagConstraints);
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
@@ -144,7 +150,7 @@ public class nota extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(15, 20, 19, 0);
         jPanel8.add(jLabel8, gridBagConstraints);
 
-        jLabel9.setForeground(new java.awt.Color(255, 0, 51));
+        total.setForeground(new java.awt.Color(255, 0, 51));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -152,7 +158,7 @@ public class nota extends javax.swing.JDialog {
         gridBagConstraints.ipady = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(15, 6, 19, 20);
-        jPanel8.add(jLabel9, gridBagConstraints);
+        jPanel8.add(total, gridBagConstraints);
 
         jPanel1.add(jPanel8, java.awt.BorderLayout.PAGE_END);
 
@@ -160,7 +166,7 @@ public class nota extends javax.swing.JDialog {
         jPanel9.setPreferredSize(new java.awt.Dimension(300, 170));
         jPanel9.setLayout(new java.awt.GridBagLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelnota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -171,9 +177,9 @@ public class nota extends javax.swing.JDialog {
                 "Nama Produk", "Jumlah", "Harga"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        jScrollPane1.setViewportView(tabelnota);
+        if (tabelnota.getColumnModel().getColumnCount() > 0) {
+            tabelnota.getColumnModel().getColumn(2).setResizable(false);
         }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -251,17 +257,41 @@ public class nota extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JLabel kasir;
+    public javax.swing.JLabel nonota;
+    public javax.swing.JTable tabelnota;
+    public javax.swing.JLabel tgl;
+    public javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
+
+    public void setDetailPembelian(String toString) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public void setTanggal(String tanggal) {
+    this.tgl.setText(tanggal);
+}
+
+public void setNomorNota(String nomor) {
+    this.nonota.setText(nomor);
+}
+
+public void setKasir(String namaKasir) {
+    this.kasir.setText(namaKasir);
+}
+
+public void setTotal(String totalHarga) {
+    this.total.setText(totalHarga);
+}
+
+    void setVisible(userprofile p, boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

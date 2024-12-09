@@ -2,12 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package aplikasi;
+package aplikasi.admin;
 
+import aplikasi.fungsi;
+import aplikasi.koneksi;
+import aplikasi.userprofile;
+import static aplikasi.admin.tampilanuser.viewData;
 import java.sql.Connection;
-import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFrame;
@@ -18,21 +22,22 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author HP
  */
-public class tampilanuser extends javax.swing.JFrame {
-    userprofile pr; // Menyimpan objek userprofile
+public class tampilanproduk extends javax.swing.JFrame {
+    userprofile pr;
 
-    // Konstruktor tanpa argumen
-    public tampilanuser() {
+    /**
+     * Creates new form 
+     */
+    public tampilanproduk() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
+        
     }
-
-    // Konstruktor dengan argumen userprofile
-    public tampilanuser(userprofile pr) {
+    
+    public tampilanproduk(userprofile pr) {
         initComponents();
         this.pr = pr; // Simpan objek userprofile
-        viewData("");
+        viewdataproduk("");
     }
 
     /**
@@ -47,14 +52,14 @@ public class tampilanuser extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         btnhapus = new javax.swing.JButton();
-        back = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         txtrefresh = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbluser = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        keysearch = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableproduk = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,13 +78,13 @@ public class tampilanuser extends javax.swing.JFrame {
             }
         });
 
-        back.setBackground(new java.awt.Color(51, 153, 255));
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/undo.png"))); // NOI18N
-        back.setBorder(null);
-        back.setBorderPainted(false);
-        back.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setBackground(new java.awt.Color(51, 153, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/undo.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -100,19 +105,24 @@ public class tampilanuser extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
-
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
-            }
-        });
-
         txtrefresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtrefresh.setText("Refresh");
+        txtrefresh.setText("refresh");
         txtrefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtrefreshActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
+
+        keysearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keysearchActionPerformed(evt);
+            }
+        });
+        keysearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                keysearchKeyReleased(evt);
             }
         });
 
@@ -122,10 +132,10 @@ public class tampilanuser extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(txtrefresh)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(txtrefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jButton3)
@@ -136,8 +146,8 @@ public class tampilanuser extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(209, 209, 209)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                    .addComponent(keysearch, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,12 +155,13 @@ public class tampilanuser extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton4)
-                            .addComponent(txtrefresh)))
+                        .addComponent(txtrefresh))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jButton3))
@@ -161,44 +172,33 @@ public class tampilanuser extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(keysearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        tbluser.setModel(new javax.swing.table.DefaultTableModel(
+        tableproduk.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "ID", "NO", "NAMA", "USERNAME", "PASSWORD", "LEVEL", "ALAMAT", "TELEPON", "EMAIL"
+                "NO", "ID", "KODE PRODUK", "NAMA PRODUK", "GAMBAR", "KATEGORI", "SUPPLIER", "HARGA JUAL", "HARGA BELI", "STOK"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tbluser);
+        ));
+        jScrollPane2.setViewportView(tableproduk);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,27 +216,28 @@ public class tampilanuser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhapusActionPerformed
-        int n = tbluser.getSelectedRow();
-        if(n != -1){
-            int id = Integer.parseInt(tbluser.getValueAt(n, 0).toString());
-            String nama = tbluser.getValueAt(n, 2).toString();
+            int n = tableproduk.getSelectedRow();
+            if(n != -1){
+            int id = Integer.parseInt(tableproduk.getValueAt(n,1).toString());
+            String product_name = tableproduk.getValueAt(n, 3).toString();
+//            JOptionPane.showMessageDialog(this, id); 
             
-            
-            int opsi = JOptionPane.showConfirmDialog(this, 
-                    "Apakah Anda yakin ingin menghapus data "+nama+"?", 
-                    "Hapus Data", 
+            int pilihan = JOptionPane.showConfirmDialog(this, 
+                    "Apakah Anda yakin untuk menghapus data "+product_name+" ini?",
+                    "Hapus Data",
                     JOptionPane.YES_NO_OPTION);
-            if(opsi == 0){
-                String Q = "DELETE FROM users "
-                        + "WHERE id="+id;
-                
+            if(pilihan == 0){
+                //yes
+                String Q = "DELETE FROM products"
+                + " WHERE id="+id+" ";
+
                 try {
                     Connection K = koneksi.Go();
                     Statement S = K.createStatement();
                     S.executeUpdate(Q);
-                    viewData(""); 
-                    JOptionPane.showMessageDialog(this, "Data "+nama+" telah terhapus");
-                    fungsi.savelog(" user "+nama+" berhasil dihapus "); 
+                    viewdataproduk(""); 
+                    JOptionPane.showMessageDialog(this, "Data "+product_name+" telah terhapus");
+                    fungsi.savelog("Produk "+product_name+" berhasil dihapus "); 
                 } catch (SQLException e) {
                 }
             }
@@ -246,65 +247,72 @@ public class tampilanuser extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnhapusActionPerformed
 
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        // TODO add your handling code here:
-
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:);
         halamanadmin ha = new halamanadmin();
         ha.updateUser(this.pr); // Pastikan Anda menyimpan objek userprofile di tampilan user
         ha.setVisible(true);
         this.dispose();
-        
-    }//GEN-LAST:event_backActionPerformed
+
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        tambahdata T = new tambahdata(this, true);
-        T.setVisible(true); 
+        tambahproduk tp = new tambahproduk(this, true);
+        tp.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-       String key = jTextField1.getText();
-        String w = "WHERE "
-                + "nama LIKE '%"+key+"%' "
-                + "OR username LIKE '%"+key+"%' "
-                + "OR password LIKE '%"+key+"%' "
-                + "OR level LIKE '%"+key+"%' " 
-                + "OR alamat LIKE '%"+key+"%' "
-                + "OR telepon LIKE '%"+key+"%' "
-                + "OR email LIKE '%"+key+"%'";
-        viewData(w); 
-    }//GEN-LAST:event_jTextField1KeyReleased
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        int n = tbluser.getSelectedRow();
-        if(n != -1){
-            int id = Integer.parseInt(tbluser.getValueAt(n, 0).toString());
-            String NM = tbluser.getValueAt(n, 2).toString();
-            String UN = tbluser.getValueAt(n, 3).toString();
-            String PS = tbluser.getValueAt(n, 4).toString();
-            String LV = tbluser.getValueAt(n, 5).toString();
-            String AL = tbluser.getValueAt(n, 6).toString();
-            String TL = tbluser.getValueAt(n, 7).toString();
-            String EM = tbluser.getValueAt(n, 8).toString();
-            editdata U = new editdata(this, true);
-            U.setId(id);
-            U.setNM(NM);
-            U.setUS(UN);
-            U.setPS(PS);
-            U.setLV(LV);
-            U.setAL(AL);
-            U.setTL(TL);
-            U.setEM(EM);
-            U.setVisible(true);
+        int n = tableproduk.getSelectedRow();
+        if (n != -1) {
+            int id = Integer.parseInt(tableproduk.getValueAt(n, 1).toString());
+            String KP = tableproduk.getValueAt(n, 2).toString();
+            String NP = tableproduk.getValueAt(n, 3).toString();
+            String GP = tableproduk.getValueAt(n, 4).toString();
+            String K = tableproduk.getValueAt(n, 5).toString();
+            String S = tableproduk.getValueAt(n, 6).toString();
+            String HJ = tableproduk.getValueAt(n, 7).toString();
+            String HB = tableproduk.getValueAt(n, 8).toString();
+            String SP = tableproduk.getValueAt(n, 9).toString();
+
+            editproduk E = new editproduk(this, true);
+            E.setId(id);
+            E.setKP(KP);
+            E.setNP(NP);
+            E.setGP(GP);
+            E.setK(K);
+            E.setS(S);
+            E.setHJ(HJ);
+            E.setHB(HB);
+            E.setSP(SP);
+            E.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Pilih data yang akan diedit");
         }
+     
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txtrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtrefreshActionPerformed
         // TODO add your handling code here:
-        viewData("");
+        viewdataproduk("");
+       
     }//GEN-LAST:event_txtrefreshActionPerformed
+
+    private void keysearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keysearchKeyReleased
+        String key =keysearch.getText();
+        String w = "WHERE "
+                + "product_code LIKE '%" + key + "%' "
+                + "OR product_name LIKE '%" + key + "%' "
+                + "OR product_category LIKE '%" + key + "%'"
+                + "OR product_supplier LIKE '%" + key + "%'";
+        viewdataproduk(w);
+        
+    }//GEN-LAST:event_keysearchKeyReleased
+
+    private void keysearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keysearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_keysearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,68 +331,71 @@ public class tampilanuser extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tampilanuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tampilanproduk.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tampilanuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tampilanproduk.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tampilanuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tampilanproduk.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tampilanuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tampilanproduk.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tampilanuser().setVisible(true);
+                new tampilanproduk().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton back;
     private javax.swing.JButton btnhapus;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private static javax.swing.JTable tbluser;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField keysearch;
+    private static javax.swing.JTable tableproduk;
     private javax.swing.JButton txtrefresh;
     // End of variables declaration//GEN-END:variables
+        
     
-    
-    public static void viewData(String where) {
+        public static void viewdataproduk(String where) { 
         try {
-            DefaultTableModel m = (DefaultTableModel) tbluser.getModel();
+            DefaultTableModel m = (DefaultTableModel) tableproduk.getModel();
             m.getDataVector().removeAllElements();
             Connection K = koneksi.Go();
             Statement S = K.createStatement();
-            String Q = "SELECT * FROM users "+where;
+            String Q = "SELECT * FROM products " + where;
+//            System.out.println(Q);
             ResultSet R = S.executeQuery(Q);
-            int n = 1;
-            while (R.next()) {                 
+            int no = 1;
+            while (R.next()) {
                 int id = R.getInt("id");
-                String nama = R.getString("nama");
-                String username = R.getString("username");
-                String password = R.getString("password");
-                String level = R.getString("level");
-                String alamat = R.getString("alamat");
-                String telepon = R.getString("telepon");
-                String email = R.getString("email");
-                Object[] data = {id, n, nama, username, password, level, alamat, telepon, email};
-                m.addRow(data); 
-                n++;
+                String p_code = R.getString("product_code");
+                String p_name = R.getString("product_name");
+                String p_image = R.getString("product_image");
+                String p_category  = R.getString("product_category");
+                String p_supplier = R.getString("product_supplier");
+                String p_price_s = R.getString("product_price_s");
+                String p_price_b = R.getString("product_price_b");
+                String p_stock = R.getString("product_stock");
+
+                Object[] D = {
+                    no, id, p_code,p_name, p_image, 
+                    p_category, p_supplier, p_price_s, p_price_b, p_stock};
+                m.addRow(D);
+
+                no++;
             }
-            
-            tbluser.getColumnModel().getColumn(0).setMinWidth(0);
-            tbluser.getColumnModel().getColumn(0).setMaxWidth(0);
-            
         } catch (SQLException e) {
             //error handling
         }
     }
-}
+        
 
+}

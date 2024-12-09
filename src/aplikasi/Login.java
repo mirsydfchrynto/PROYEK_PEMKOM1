@@ -4,6 +4,8 @@
  */
 package aplikasi;
 
+import aplikasi.kasir.halamankasir;
+import aplikasi.admin.halamanadmin;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -280,7 +282,7 @@ public class Login extends javax.swing.JFrame {
 
                 if (lv.equals("kasir")) {
                     this.setVisible(false);
-                    halamankasir hk = new halamankasir();
+                    halamankasir hk = new halamankasir(up);
                     hk.setVisible(true);
                 } else if (lv.equals("admin")) {
                     this.setVisible(false);
