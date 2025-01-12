@@ -4,14 +4,20 @@
  */
 package aplikasi.kasir;
 
+import aplikasi.Login;
+import aplikasi.halamanprofil;
 import aplikasi.koneksi;
 import aplikasi.userprofile;
+import java.awt.Frame;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -23,18 +29,21 @@ import javax.swing.table.DefaultTableModel;
  */
 public class halamankasir extends javax.swing.JFrame {
 
-    userprofile p;
+    userprofile pr;
 
     /**
      * Creates new form KasirPage
+     * @param up
      */
-    public halamankasir(userprofile P) {
+    public halamankasir(userprofile up) {
         initComponents();
-        this.p = p;
+        this.pr = up;
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
     
      public halamankasir() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
 
@@ -50,7 +59,6 @@ public class halamankasir extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         txtProduk = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         lblTotalHarga = new javax.swing.JLabel();
@@ -62,6 +70,12 @@ public class halamankasir extends javax.swing.JFrame {
         tombolCheckout = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCart = new javax.swing.JTable();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,13 +91,6 @@ public class halamankasir extends javax.swing.JFrame {
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Kode Product");
-
-        jButton1.setText("Laporan  Keuangan Harian");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jButton2.setBackground(new java.awt.Color(255, 0, 0));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,16 +112,13 @@ public class halamankasir extends javax.swing.JFrame {
                 .addComponent(txtProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(33, 33, 33))
+                .addContainerGap(381, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
                     .addComponent(txtProduk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
@@ -185,9 +189,7 @@ public class halamankasir extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(txtUangBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53))
+                    .addComponent(txtUangBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTotalHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbluangKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
@@ -236,6 +238,40 @@ public class halamankasir extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
+        jMenu1.setText("Menu");
+
+        jMenuItem2.setText("Laporan Keuangan");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("RiwayatTransaksi");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Setting");
+
+        jMenuItem4.setText("Profile");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -261,20 +297,19 @@ public class halamankasir extends javax.swing.JFrame {
                 String nama = R.getString("product_name");
                 String harga = R.getString("product_price_s");
 
-                //pengecekan, apakah produk sudah ada di
-                //keranjang/belum
+                // Check if the product is already in the cart
                 int row = tblCart.getRowCount();
                 boolean ada = false;
                 int QTY = 0;
                 int baris = 0;
                 if (row > 0) { 
-                for (int i = 0; i < row; i++) { 
-                    int id_produk = Integer.parseInt(tblCart.getValueAt(i, 0).toString()); 
-                    if (id_produk == id) { 
-                        ada = true; 
-                        baris = i; 
-                        QTY = Integer.parseInt(tblCart.getValueAt(i, 2).toString()) + 1; 
-                        break; 
+                    for (int i = 0; i < row; i++) { 
+                        int id_produk = Integer.parseInt(tblCart.getValueAt(i, 0).toString()); 
+                        if (id_produk == id) { 
+                            ada = true; 
+                            baris = i; 
+                            QTY = Integer.parseInt(tblCart.getValueAt(i, 2).toString()) + 1; 
+                            break; 
                         }
                     }
                     if (ada) {
@@ -290,19 +325,16 @@ public class halamankasir extends javax.swing.JFrame {
                 }
             }
 
-            
+            // Clear the text field after processing
+            txtProduk.setText("");
+
             updateTotalHarga();
             endsKetikUangPembayaran();
-            
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_txtProdukActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtUangBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUangBayarActionPerformed
         // TODO add your handling code here:
@@ -322,6 +354,27 @@ public class halamankasir extends javax.swing.JFrame {
         // TODO add your handling code here:
         delFromCart();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        this.setVisible(false);
+        laporanharian lk = new laporanharian(this.pr);
+        lk.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        this.setVisible(false);
+        riwayatTR rt = new riwayatTR(this.pr);
+        rt.setVisible(true);
+        rt.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        halamanprofil hp = new halamanprofil(this.pr); // Kirim objek userprofile
+        hp.setVisible(true); // Tampilkan halaman profil
+        this.dispose();
+        
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -360,12 +413,17 @@ public class halamankasir extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
@@ -390,7 +448,6 @@ public class halamankasir extends javax.swing.JFrame {
             lblTotalHarga.setText("Rp " + (long) total);
             
         } catch (NumberFormatException e) {
-            e.printStackTrace();
         }
     }
 
@@ -435,49 +492,131 @@ public class halamankasir extends javax.swing.JFrame {
     
     
     
-    private void checkout(){
-        if (tblCart.getRowCount() == 0) {
-         JOptionPane.showMessageDialog(this, "Keranjang belanja kosong!");
-        return;
+    private void checkout() {
+        Connection K = null;
+        PreparedStatement insertTransaksi = null;
+        PreparedStatement insertDetailTransaksi = null;
+        PreparedStatement updateStok = null;
+        String uang_kembali = lbluangKembali.getText(); // Uang kembalian dari GUI
+        String uang_pembayaran = lblTotalHarga.getText();  // Uang pembayaran dari GUI
+
+        try {
+            // Mulai koneksi dan nonaktifkan auto-commit
+            K = koneksi.Go();
+            K.setAutoCommit(false);
+
+            // Ambil tanggal transaksi
+            SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
+            String tanggalTransaksi = SDF.format(new Date());
+
+            // Data kasir
+            int idKasir = pr.getId();
+
+            // Hitung total harga dari keranjang
+            DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
+            double totalTransaksi = 0;
+            for (int i = 0; i < model.getRowCount(); i++) {
+                int qty = Integer.parseInt(model.getValueAt(i, 2).toString());
+                double harga = Double.parseDouble(model.getValueAt(i, 3).toString());
+                totalTransaksi += qty * harga;
+            }
+
+            // Masukkan data ke tabel transaksi
+            String insertTransaksiQuery = "INSERT INTO transaksi (id_akun, tanggal_transaksi, total_harga) VALUES (?, ?, ?)";
+            insertTransaksi = K.prepareStatement(insertTransaksiQuery, Statement.RETURN_GENERATED_KEYS);
+            insertTransaksi.setInt(1, idKasir);
+            insertTransaksi.setString(2, tanggalTransaksi);
+            insertTransaksi.setDouble(3, totalTransaksi);
+            insertTransaksi.executeUpdate();
+
+            // Ambil ID transaksi yang baru saja dibuat
+            ResultSet rs = insertTransaksi.getGeneratedKeys();
+            int idTransaksi = 0;
+            if (rs.next()) {
+                idTransaksi = rs.getInt(1);
+            }
+
+            // Masukkan data ke tabel detail_transaksi
+            String insertDetailTransaksiQuery = "INSERT INTO transaksi_detail (id_transaksi, id_produk, id_kasir, jumlah_produk,"
+                    + "harga_satuan, total_harga_produk, tanggal_transaksi) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            insertDetailTransaksi = K.prepareStatement(insertDetailTransaksiQuery);
+
+            String updateStokQuery = "UPDATE products SET product_stock = product_stock - ? WHERE id = ?";
+            updateStok = K.prepareStatement(updateStokQuery);
+
+            for (int i = 0; i < model.getRowCount(); i++) {
+                int idProduk = Integer.parseInt(model.getValueAt(i, 0).toString());
+                int qty = Integer.parseInt(model.getValueAt(i, 2).toString());
+                double harga = Double.parseDouble(model.getValueAt(i, 3).toString());
+                double totalHargaDetail = qty * harga;
+
+                // Masukkan detail transaksi
+                insertDetailTransaksi.setInt(1, idTransaksi);
+                insertDetailTransaksi.setInt(2, idProduk);
+                insertDetailTransaksi.setInt(3, idKasir);
+                insertDetailTransaksi.setInt(4, qty);
+                insertDetailTransaksi.setDouble(5, harga);
+                insertDetailTransaksi.setDouble(6, totalHargaDetail);
+                insertDetailTransaksi.setString(7, tanggalTransaksi);
+                insertDetailTransaksi.executeUpdate();
+
+                // Update stok produk
+                updateStok.setInt(1, qty);
+                updateStok.setInt(2, idProduk);
+                updateStok.executeUpdate();
+            }
+
+            // Commit transaksi
+            K.commit();
+
+            // Tampilkan nota menggunakan setData
+            nota1 notaDialog = new nota1(this, true);
+            notaDialog.setData(
+                    pr.getNama(), // Nama kasir
+                    tanggalTransaksi, // Tanggal transaksi
+                    idTransaksi, // ID transaksi
+                    totalTransaksi, // Total transaksi
+                    model, // Model tabel belanja
+                    uang_kembali, // Uang kembalian
+                    uang_pembayaran // Uang pembayaran
+            );
+            notaDialog.setVisible(true);
+
+            // Reset tabel keranjang
+            model.setRowCount(0);
+
+            JOptionPane.showMessageDialog(this, "Checkout berhasil!");
+        } catch (SQLException e) {
+            // Rollback jika terjadi kesalahan
+            if (K != null) {
+                try {
+                    K.rollback();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Gagal melakukan rollback: " + ex.getMessage());
+                }
+            }
+            JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage());
+        } finally {
+            // Tutup semua resource
+            try {
+                if (insertTransaksi != null) {
+                    insertTransaksi.close();
+                }
+                if (insertDetailTransaksi != null) {
+                    insertDetailTransaksi.close();
+                }
+                if (updateStok != null) {
+                    updateStok.close();
+                }
+                if (K != null) {
+                    K.setAutoCommit(true);
+                    K.close();
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(this, "Gagal menutup koneksi: " + e.getMessage());
+            }
+        }
     }
-
-        // Menghitung total harga
-        double totalHarga = 0;
-        DefaultTableModel modelNota = new DefaultTableModel();
-        modelNota.addColumn("ID");
-        modelNota.addColumn("Nama Produk");
-        modelNota.addColumn("Qty");
-        modelNota.addColumn("Harga");
-
-        for (int i = 0; i < tblCart.getRowCount(); i++) {
-            double harga = Double.parseDouble(tblCart.getValueAt(i, 3).toString());
-            double qty = Double.parseDouble(tblCart.getValueAt(i, 2).toString());
-            totalHarga += harga * qty;
-
-            // Menambahkan data ke model nota
-            modelNota.addRow(new Object[]{
-                tblCart.getValueAt(i, 0), // ID
-                tblCart.getValueAt(i, 1), // Nama Produk
-                qty,                       // Qty
-                harga                      // Harga
-            });
-        }
-
-        // Membuat instance dari JDialog nota
-        nota notaDialog = new nota(this, true);
-
-        // Mengisi data pada komponen nota
-        notaDialog.tgl.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date())); // Tanggal
-        notaDialog.nonota.setText("NO-" + System.currentTimeMillis()); // Nomor Nota
-        notaDialog.kasir.setText("Kasir: " + p.getNama()); // Nama Kasir
-        notaDialog.total.setText("Rp " + (long) totalHarga); // Total Harga
-
-        // Mengisi JTable di nota
-        notaDialog.tabelnota.setModel(modelNota); // Mengatur model JTable
-
-        // Menampilkan JDialog
-        notaDialog.setVisible(p, true);
-        }
     
     
     

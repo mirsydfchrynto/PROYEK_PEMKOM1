@@ -4,7 +4,6 @@
  */
 package aplikasi.admin;
 
-import aplikasi.admin.tampilanproduk;
 import aplikasi.fungsi;
 import aplikasi.koneksi;
 import java.awt.event.KeyEvent;
@@ -37,6 +36,8 @@ private String HB; // Harga Beli
 private String SP; // Stock Produk
     /**
      * Creates new form 
+     * @param parent
+     * @param modal
      */
     public editproduk(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -393,8 +394,7 @@ private String SP; // Stock Produk
                 suplierr.setSelectedIndex(i);
                 break;
             }
-    }
-
+        }
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -541,12 +541,12 @@ public void setSP(String SP) {
         try {
             Connection C = koneksi.Go();
             Statement ST = C.createStatement();
-            String Q = "SELECT id,name FROM product_category";
+            String Q = "SELECT id,nama FROM produk_kategori";
             ResultSet R = ST.executeQuery(Q);
             categoriproduk.removeAllItems();
             while (R.next()) {
                 int id = R.getInt("id");
-                String name = R.getString("name");
+                String name = R.getString("nama");
                 categoriproduk.addItem(id + "-" + name);
             }
         } catch (SQLException e) {
@@ -557,23 +557,15 @@ public void setSP(String SP) {
         try {
             Connection C = koneksi.Go();
             Statement ST = C.createStatement();
-            String Q = "SELECT id,name FROM supplier";
+            String Q = "SELECT id,nama FROM supplier";
             ResultSet R = ST.executeQuery(Q);
             suplierr.removeAllItems();
             while (R.next()) {
                 int id = R.getInt("id");
-                String name = R.getString("name");
+                String name = R.getString("nama");
                 suplierr.addItem(id + "-" + name);
             }
         } catch (SQLException e) {
         }
     }
-
-    private void number(KeyEvent evt) {
-        char c = evt.getKeyChar();
-        if (!Character.isDigit(c)) {
-            evt.consume();
-        }
-    }
-
 }

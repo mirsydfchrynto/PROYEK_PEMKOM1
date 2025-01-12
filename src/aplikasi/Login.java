@@ -4,6 +4,7 @@
  */
 package aplikasi;
 
+import aplikasi.owner.halamanowner;
 import aplikasi.kasir.halamankasir;
 import aplikasi.admin.halamanadmin;
 import java.sql.Connection;
@@ -248,7 +249,7 @@ public class Login extends javax.swing.JFrame {
         try {
             Connection c = koneksi.Go();
             Statement s = c.createStatement();
-            String sql = "SELECT * FROM `users` WHERE username='"+user+"' AND password='"+pass+"';";
+            String sql = "SELECT * FROM `user` WHERE username='"+user+"' AND password='"+pass+"';";
             ResultSet r = s.executeQuery(sql);
             int status = 0;
             int id;

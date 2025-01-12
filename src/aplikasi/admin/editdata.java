@@ -254,7 +254,7 @@ public class editdata extends javax.swing.JDialog {
 
         try {
             Connection K = koneksi.Go();
-            String Q = "UPDATE users SET nama=?, username=?, password=?, level=?, alamat=?, telepon=?, email=? WHERE id=?";
+            String Q = "UPDATE user SET nama=?, username=?, password=?, level=?, alamat=?, telepon=?, email=? WHERE id=?";
             PreparedStatement PSt = K.prepareStatement(Q);
             PSt.setString(1, name);
             PSt.setString(2, user);

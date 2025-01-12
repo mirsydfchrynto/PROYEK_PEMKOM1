@@ -5,6 +5,8 @@
 package aplikasi;
 
 import aplikasi.admin.halamanadmin;
+import aplikasi.kasir.halamankasir;
+import aplikasi.owner.halamanowner;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -225,11 +227,38 @@ public class halamanprofil extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        halamanadmin ha = new halamanadmin();
-        ha.updateUser(this.pr); // Pastikan Anda menyimpan objek userprofile di tampilan user
-        ha.setVisible(true);
-        this.dispose();
+        if (null == pr.getLevel()) {
+            // Jika level tidak dikenali, tampilkan pesan error
+            JOptionPane.showMessageDialog(this, "Level pengguna tidak dikenali!", "Error", JOptionPane.ERROR_MESSAGE);
+        } else // TODO add your handling code here:
+        switch (pr.getLevel()) {
+            case "admin" -> {
+                // Jika level adalah admin, arahkan ke halaman admin
+                this.setVisible(false);
+                halamanadmin ha = new halamanadmin(this.pr); // Kirim userprofile ke halaman admin
+                ha.setVisible(true);
+                ha.setExtendedState(JFrame.MAXIMIZED_BOTH); // Tampilkan dalam mode layar penuh
+            }
+            case "kasir" -> {
+                this.setVisible(false);
+                halamankasir rt = new halamankasir(this.pr); // Kirim userprofile ke halaman kasir
+                rt.setVisible(true);
+                rt.setExtendedState(JFrame.MAXIMIZED_BOTH); // Tampilkan dalam mode layar penuh
+            }
+            case "owner" -> {
+                // Jika level adalah owner, arahkan ke halaman owner
+                this.setVisible(false);
+                halamanowner ho = new halamanowner(this.pr); // Kirim userprofile ke halaman owner
+                ho.setVisible(true);
+                ho.setExtendedState(JFrame.MAXIMIZED_BOTH); // Tampilkan dalam mode layar penuh
+            }
+            default -> // Jika level tidak dikenali, tampilkan pesan error
+                JOptionPane.showMessageDialog(this, "Level pengguna tidak dikenali!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    // Tutup halaman saat ini setelah navigasi
+    this.dispose();
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

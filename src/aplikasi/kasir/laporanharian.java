@@ -4,6 +4,15 @@
  */
 package aplikasi.kasir;
 
+import aplikasi.koneksi;
+import aplikasi.userprofile;
+import java.awt.Frame;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author HP
@@ -13,6 +22,19 @@ public class laporanharian extends javax.swing.JDialog {
     /**
      * Creates new form 
      */
+    
+    userprofile p;
+    
+    /**
+     * Creates new form RiwayatTransaksi
+     */
+    
+    public laporanharian(userprofile P) {
+        initComponents();
+        this.p = p;
+        Laporan("");
+    }
+    
     public laporanharian(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -26,14 +48,14 @@ public class laporanharian extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -42,7 +64,16 @@ public class laporanharian extends javax.swing.JDialog {
         jPanel6.setBackground(new java.awt.Color(0, 153, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel6.setPreferredSize(new java.awt.Dimension(800, 70));
-        jPanel6.setLayout(new java.awt.GridBagLayout());
+
+        jButton2.setBackground(new java.awt.Color(51, 153, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/undo.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -50,50 +81,61 @@ public class laporanharian extends javax.swing.JDialog {
         jLabel1.setText("LAPORAN KEUANGAN HARIAN");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 559;
-        gridBagConstraints.ipady = 36;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(1, 2, 1, 16);
-        jPanel6.add(jLabel1, gridBagConstraints);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
 
         jPanel5.add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel9.setPreferredSize(new java.awt.Dimension(320, 400));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Tanggal", "Nama", "Jumlah Transaksi", "Total Pendapatan", "Saldo Awal", "Saldo Akhir"
+                "id", "Nama Kasir", "Tanggal", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 933, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
         );
 
         jPanel5.add(jPanel9, java.awt.BorderLayout.CENTER);
@@ -106,11 +148,19 @@ public class laporanharian extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        halamankasir k = new halamankasir(this.p);
+        k.setVisible(true);
+        this.dispose();
+        k.setExtendedState(Frame.MAXIMIZED_BOTH);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,13 +205,46 @@ public class laporanharian extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton back;
-    private javax.swing.JButton back1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private static javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private static javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
+
+public void Laporan(String where) {
+        try (
+                java.sql.Connection K = koneksi.Go(); // Membuka koneksi database
+                 Statement S = K.createStatement(); // Membuat statement
+                ) {
+            DefaultTableModel m = (DefaultTableModel) jTable2.getModel();
+            m.setRowCount(0); // Menghapus data sebelumnya dari tabel
+
+            // Query untuk mengambil data dari tabel transaksi
+            String Q = "SELECT id_transaksi, id_akun, tanggal_transaksi, total_harga FROM transaksi " + where;
+
+            try (ResultSet R = S.executeQuery(Q)) { // Menjalankan query
+                while (R.next()) {
+                    int id = R.getInt("id_transaksi");
+                    int idAkun = R.getInt("id_akun");
+                    String tanggalTransaksi = R.getString("tanggal_transaksi");
+                    double totalHarga = R.getDouble("total_harga");
+
+                    // Membuat array untuk baris baru
+                    Object[] D = {id, idAkun, tanggalTransaksi, totalHarga};
+                    m.addRow(D); // Menambahkan baris ke tabel
+                }
+            }
+
+            // Menyesuaikan lebar kolom tabel
+            jTable2.getColumnModel().getColumn(1).setMinWidth(0);
+            jTable2.getColumnModel().getColumn(1).setMaxWidth(0);
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error saat mengambil data: " + e.getMessage());
+        }
+    }
+
 }

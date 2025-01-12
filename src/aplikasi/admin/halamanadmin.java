@@ -4,9 +4,8 @@
  */
 package aplikasi.admin;
 
-import aplikasi.admin.tampilanproduk;
-import aplikasi.admin.tampilanuser;
 import aplikasi.halamanprofil;
+import aplikasi.kasir.riwayatTR;
 import aplikasi.userprofile;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -264,6 +263,10 @@ public class halamanadmin extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false); 
+        riwayatTR hp = new riwayatTR(this.pr); // Kirim objek userprofile
+        hp.setVisible(true); // Tampilkan halaman profil
+        hp.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

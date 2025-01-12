@@ -230,7 +230,7 @@ public class tampilanuser extends javax.swing.JFrame {
                     "Hapus Data", 
                     JOptionPane.YES_NO_OPTION);
             if(opsi == 0){
-                String Q = "DELETE FROM users "
+                String Q = "DELETE FROM user "
                         + "WHERE id="+id;
                 
                 try {
@@ -365,7 +365,7 @@ public class tampilanuser extends javax.swing.JFrame {
             m.getDataVector().removeAllElements();
             Connection K = koneksi.Go();
             Statement S = K.createStatement();
-            String Q = "SELECT * FROM users "+where;
+            String Q = "SELECT * FROM user "+where;
             ResultSet R = S.executeQuery(Q);
             int n = 1;
             while (R.next()) {                 

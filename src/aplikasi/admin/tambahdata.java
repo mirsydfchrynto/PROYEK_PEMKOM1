@@ -241,7 +241,7 @@ public class tambahdata extends javax.swing.JDialog {
         
         try {
             Connection K = koneksi.Go();
-            String Q = "INSERT INTO users "
+            String Q = "INSERT INTO user "
                     + "(nama,username,password,level,alamat,telepon,email) "
                     + "VALUES (?,?,?,?,?,?,?)";
             PreparedStatement PS = K.prepareStatement(Q);

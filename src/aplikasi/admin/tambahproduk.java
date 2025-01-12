@@ -34,9 +34,8 @@ public class tambahproduk extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         
-        viewCategory("product_category", ktproduk);
+        viewCategory("produk_kategori", ktproduk);
         viewCategory("supplier", supplier);
-        generateCode();
     }
 
     /**
@@ -69,7 +68,7 @@ public class tambahproduk extends javax.swing.JDialog {
         txtstock = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
-        txtkode = new javax.swing.JLabel();
+        txtkode = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -195,8 +194,12 @@ public class tambahproduk extends javax.swing.JDialog {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("TAMBAH DATA PRODUK");
 
-        txtkode.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtkode.setForeground(new java.awt.Color(255, 255, 255));
+        txtkode.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtkode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtkodeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -210,9 +213,9 @@ public class tambahproduk extends javax.swing.JDialog {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nmproduk, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtkode, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtkode, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(btnbatal)
@@ -253,10 +256,10 @@ public class tambahproduk extends javax.swing.JDialog {
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(txtkode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtkode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nmproduk, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -353,8 +356,7 @@ public class tambahproduk extends javax.swing.JDialog {
                     + "product_supplier,"
                     + "product_price_s, "
                     + "product_price_b, "
-                    + "product_stock) "
-                    + "VALUES (?,?,?,?,?,?,?,?)";
+                    + "product_stock) VALUES (?,?,?,?,?,?,?,?)";
             //System.out.println(Q);
             PreparedStatement ps = K.prepareStatement(Q);
             ps.setString(1, txtkode.getText());
@@ -415,6 +417,10 @@ public class tambahproduk extends javax.swing.JDialog {
         number(evt); 
     }//GEN-LAST:event_txtstockKeyTyped
 
+    private void txtkodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtkodeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -472,7 +478,7 @@ public class tambahproduk extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> supplier;
     private javax.swing.JTextField txtbeli;
     private javax.swing.JTextField txtjual;
-    private javax.swing.JLabel txtkode;
+    private javax.swing.JTextField txtkode;
     private javax.swing.JTextField txtstock;
     // End of variables declaration//GEN-END:variables
 private void viewCategory(String tableName, JComboBox cmb){
@@ -485,49 +491,17 @@ private void viewCategory(String tableName, JComboBox cmb){
 //            int n = 1;
             while (R.next()) {                 
                 int id = R.getInt("id");                 	 	 	 	 	 	 	 	
-                String name = R.getString("name");
+                String name = R.getString("nama");
 //                String desc = R.getString("description");
                 cmb.addItem(id+"-"+name);                 
             }
     } catch (SQLException e) {
-        System.err.println("ErrorCode: 1123"+e.getMessage());
+        System.err.println("ErrorCode: "+e.getMessage());
     }
 }
-
-    private void generateCode() {
-        try {
-            Connection K = koneksi.Go();
-            String Q = "SELECT product_code AS kode FROM products ORDER BY id DESC LIMIT 1;";
-            Statement ST = K.createStatement();
-            ResultSet R = ST.executeQuery(Q);
-            String kode = "";
-            while (R.next()) {                
-                kode = R.getString("kode");
-            }
-            
-            int P = Integer.parseInt(kode.substring(1));
-            String newCode = "";
-            if(P < 10){
-                newCode = "S0000"+(P+1);
-            }else if(P>9 && P < 100){
-                newCode = "S000"+(P+1);
-            }else if(P>99 && P < 1000){
-                newCode = "S00"+(P+1);
-            }else if(P>999 && P < 10000){
-                newCode = "S0"+(P+1);
-            }else if(P>9999 && P < 10000){
-                newCode = "S"+(P+1);
-            }
-            txtkode.setText(newCode); 
-            
-        } catch (NumberFormatException | SQLException e) {
-        }
-    
-    }
-
     private void number(KeyEvent evt) {
         char c = evt.getKeyChar();
-        if(!Character.isDigit(c)){
+        if (!Character.isDigit(c)) {
             evt.consume();
         }
     }
