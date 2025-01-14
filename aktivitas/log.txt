@@ -261,3 +261,24 @@
 [12/01/2025 15:40:4 WIB]  Perubahan produk tisu berhasil 
 [12/01/2025 15:40:20 WIB] Login berhasil - Username: kasir (Level: kasir)
 [12/01/2025 15:42:9 WIB] Login berhasil - Username: owner (Level: owner)
+[13/01/2025 14:31:21 WIB] Login berhasil - Username: admin (Level: admin)
+[13/01/2025 14:31:52 WIB] Login berhasil - Username: kasir (Level: kasir)
+[13/01/2025 14:35:31 WIB] Login berhasil - Username: admin (Level: admin)
+[13/01/2025 14:37:37 WIB]  Penambahan user esa berhasil 
+[13/01/2025 14:37:48 WIB]  Perubahan user esa sikal berhasil 
+[13/01/2025 14:38:34 WIB]  Penambahan produk korek berhasil 
+[13/01/2025 14:38:46 WIB]  Perubahan produk korek api berhasil 
+[13/01/2025 14:39:31 WIB] Login gagal - Username: kasir2 (Username/Password tidak valid)
+[13/01/2025 14:39:40 WIB] Login gagal - Username: kasir3 (Username/Password tidak valid)
+[13/01/2025 14:39:44 WIB] Login berhasil - Username: kasir3 (Level: kasir)
+[13/01/2025 14:42:13 WIB] Login berhasil - Username: kasir3 (Level: kasir)
+[13/01/2025 14:50:43 WIB] Login berhasil - Username: kasir (Level: kasir)
+[13/01/2025 14:51:10 WIB] Login berhasil - Username: kasir (Level: kasir)
+[13/01/2025 14:56:23 WIB] Login berhasil - Username: kasir (Level: kasir)
+[13/01/2025 14:56:55 WIB] Login berhasil - Username: kasir (Level: kasir)
+[13/01/2025 14:58:0 WIB] Login gagal - Username: ksir (Username/Password tidak valid)
+[13/01/2025 14:58:5 WIB] Login berhasil - Username: kasir (Level: kasir)
+[13/01/2025 15:6:33 WIB] Login berhasil - Username: kasir (Level: kasir)
+[13/01/2025 15:8:9 WIB] Login berhasil - Username: kasir (Level: kasir)
+[13/01/2025 15:8:42 WIB] Login berhasil - Username: kasir (Level: kasir)
+[13/01/2025 15:15:27 WIB] Login berhasil - Username: kasir (Level: kasir)

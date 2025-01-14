@@ -17,13 +17,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author HP
  */
-public class laporanharian extends javax.swing.JDialog {
+public class laporanharian extends javax.swing.JFrame {
 
     /**
      * Creates new form 
      */
     
-    userprofile p;
+    userprofile pr;
     
     /**
      * Creates new form RiwayatTransaksi
@@ -31,12 +31,11 @@ public class laporanharian extends javax.swing.JDialog {
     
     public laporanharian(userprofile P) {
         initComponents();
-        this.p = p;
+        this.pr = P;
         Laporan("");
     }
     
     public laporanharian(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
         initComponents();
     }
 
@@ -156,7 +155,7 @@ public class laporanharian extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        halamankasir k = new halamankasir(this.p);
+        halamankasir k = new halamankasir(this.pr);
         k.setVisible(true);
         this.dispose();
         k.setExtendedState(Frame.MAXIMIZED_BOTH);

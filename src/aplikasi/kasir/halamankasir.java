@@ -359,6 +359,7 @@ public class halamankasir extends javax.swing.JFrame {
         this.setVisible(false);
         laporanharian lk = new laporanharian(this.pr);
         lk.setVisible(true);
+        lk.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed

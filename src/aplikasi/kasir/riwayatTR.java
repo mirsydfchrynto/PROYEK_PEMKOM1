@@ -25,17 +25,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class riwayatTR extends javax.swing.JFrame {
     userprofile pr;
-    private Object from;
     
     /**
      * Creates new form RiwayatTransaksi
      */
     
-    public riwayatTR(userprofile P) {
+    public riwayatTR(userprofile pr) {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-        this.pr = P;
+        if (pr == null) {
+            throw new IllegalArgumentException("User  profile cannot be null");
+        }
+        this.pr = pr; // Ini seharusnya 'this.pr = P;'
         jLabel2.setText("level : " + pr.getLevel());
         Laporan("");
     }
@@ -102,7 +104,7 @@ public class riwayatTR extends javax.swing.JFrame {
             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(19, 19, 19)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
