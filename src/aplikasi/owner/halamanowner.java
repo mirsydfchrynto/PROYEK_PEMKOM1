@@ -35,6 +35,7 @@ public class halamanowner extends javax.swing.JFrame {
 
     public halamanowner() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     public halamanowner(userprofile o) {
@@ -42,6 +43,7 @@ public class halamanowner extends javax.swing.JFrame {
 
         this.pr = o;
         labelnama.setText(pr.getNama() + "(" + pr.getLevel() + ")");
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
     }
 

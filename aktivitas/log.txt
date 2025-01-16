@@ -282,3 +282,40 @@
 [13/01/2025 15:8:9 WIB] Login berhasil - Username: kasir (Level: kasir)
 [13/01/2025 15:8:42 WIB] Login berhasil - Username: kasir (Level: kasir)
 [13/01/2025 15:15:27 WIB] Login berhasil - Username: kasir (Level: kasir)
+[14/01/2025 14:54:0 WIB] Login berhasil - Username: admin (Level: admin)
+[14/01/2025 14:55:17 WIB]  Penambahan produk sanqua berhasil 
+[14/01/2025 14:55:59 WIB] Login gagal - Username: kasir2 (Username/Password tidak valid)
+[14/01/2025 14:56:4 WIB] Login berhasil - Username: kasir3 (Level: kasir)
+[14/01/2025 15:0:48 WIB] Login berhasil - Username: owner (Level: owner)
+[14/01/2025 15:55:15 WIB] Login berhasil - Username: admin (Level: admin)
+[14/01/2025 15:56:47 WIB] Login berhasil - Username: admin (Level: admin)
+[14/01/2025 15:57:38 WIB]  Penambahan user marsha berhasil 
+[14/01/2025 15:57:52 WIB]  Perubahan user marsha berhasil 
+[14/01/2025 15:58:3 WIB]  user panjisatriaikanlele berhasil dihapus 
+[14/01/2025 16:2:26 WIB]  Penambahan produk tissue alfamart berhasil 
+[14/01/2025 16:2:46 WIB]  Perubahan produk tissue alfamart berhasil 
+[14/01/2025 16:3:48 WIB] Login berhasil - Username: kasir3 (Level: kasir)
+[14/01/2025 16:7:26 WIB] Login gagal - Username: admin (Username/Password tidak valid)
+[14/01/2025 16:7:31 WIB] Login berhasil - Username: admin (Level: admin)
+[14/01/2025 16:7:57 WIB]  Perubahan produk tissue alfamart berhasil 
+[14/01/2025 16:8:23 WIB] Login gagal - Username: kasir2 (Username/Password tidak valid)
+[14/01/2025 16:8:27 WIB] Login gagal - Username: kasir2 (Username/Password tidak valid)
+[14/01/2025 16:8:32 WIB] Login gagal - Username: kasir2 (Username/Password tidak valid)
+[14/01/2025 16:8:42 WIB] Login gagal - Username: kasir2 (Username/Password tidak valid)
+[14/01/2025 16:8:47 WIB] Login gagal - Username: kasir2 (Username/Password tidak valid)
+[14/01/2025 16:9:4 WIB] Login gagal - Username: kasir2 (Username/Password tidak valid)
+[14/01/2025 16:9:9 WIB] Login berhasil - Username: kasir3 (Level: kasir)
+[14/01/2025 16:11:11 WIB] Login berhasil - Username: admin (Level: admin)
+[14/01/2025 16:11:40 WIB] Login gagal - Username: kasir2 (Username/Password tidak valid)
+[14/01/2025 16:11:47 WIB] Login berhasil - Username: kasir2 (Level: kasir)
+[14/01/2025 16:12:56 WIB] Login berhasil - Username: admin (Level: admin)
+[14/01/2025 16:13:30 WIB]  Perubahan produk tissue alfamart berhasil 
+[14/01/2025 16:13:55 WIB] Login berhasil - Username: owner (Level: owner)
+[15/01/2025 14:58:15 WIB] Login berhasil - Username: admin (Level: admin)
+[15/01/2025 15:0:19 WIB]  Penambahan produk parfum berhasil 
+[15/01/2025 15:0:35 WIB] Login berhasil - Username: kasir2 (Level: kasir)
+[15/01/2025 15:3:39 WIB] Login berhasil - Username: owner (Level: owner)
+[15/01/2025 15:4:1 WIB] Login berhasil - Username: admin (Level: admin)
+[16/01/2025 9:52:25 WIB] Login berhasil - Username: admin (Level: admin)
+[16/01/2025 9:55:35 WIB] Login berhasil - Username: kasir2 (Level: kasir)
+[16/01/2025 9:56:17 WIB] Login berhasil - Username: owner (Level: owner)

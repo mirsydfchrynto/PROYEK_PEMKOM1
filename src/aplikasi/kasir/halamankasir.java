@@ -493,34 +493,55 @@ public class halamankasir extends javax.swing.JFrame {
     
     
     
-    private void checkout() {
-        Connection K = null;
-        PreparedStatement insertTransaksi = null;
-        PreparedStatement insertDetailTransaksi = null;
-        PreparedStatement updateStok = null;
-        String uang_kembali = lbluangKembali.getText(); // Uang kembalian dari GUI
-        String uang_pembayaran = lblTotalHarga.getText();  // Uang pembayaran dari GUI
+private void checkout() {
+    Connection K = null;
+    PreparedStatement insertTransaksi = null;
+    PreparedStatement insertDetailTransaksi = null;
+    PreparedStatement updateStok = null;
+    String uang_kembali = lbluangKembali.getText(); // Uang kembalian dari GUI
+    String uang_pembayaran = lblTotalHarga.getText();  // Uang pembayaran dari GUI
 
-        try {
-            // Mulai koneksi dan nonaktifkan auto-commit
-            K = koneksi.Go();
-            K.setAutoCommit(false);
+    try {
+        // Mulai koneksi dan nonaktifkan auto-commit
+        K = koneksi.Go();
+        K.setAutoCommit(false);
 
-            // Ambil tanggal transaksi
-            SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
-            String tanggalTransaksi = SDF.format(new Date());
+        // Ambil tanggal transaksi
+        SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
+        String tanggalTransaksi = SDF.format(new Date());
 
-            // Data kasir
-            int idKasir = pr.getId();
+        // Data kasir
+        int idKasir = pr.getId();
 
-            // Hitung total harga dari keranjang
-            DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
-            double totalTransaksi = 0;
-            for (int i = 0; i < model.getRowCount(); i++) {
-                int qty = Integer.parseInt(model.getValueAt(i, 2).toString());
-                double harga = Double.parseDouble(model.getValueAt(i, 3).toString());
-                totalTransaksi += qty * harga;
+        // Hitung total harga dari keranjang
+        DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
+        double totalTransaksi = 0;
+        for (int i = 0; i < model.getRowCount(); i++) {
+            int qty = Integer.parseInt(model.getValueAt(i, 2).toString());
+            double harga = Double.parseDouble(model.getValueAt(i, 3).toString());
+            totalTransaksi += qty * harga;
+        }
+
+        // Cek stok produk sebelum checkout
+        for (int i = 0; i < model.getRowCount(); i++) {
+            int idProduk = Integer.parseInt(model.getValueAt(i, 0).toString());
+            int qty = Integer.parseInt(model.getValueAt(i, 2).toString());
+
+            String checkStockQuery = "SELECT product_stock FROM products WHERE id = ?";
+            PreparedStatement checkStockStmt = K.prepareStatement(checkStockQuery);
+            checkStockStmt.setInt(1, idProduk);
+            ResultSet stockResult = checkStockStmt.executeQuery();
+
+            if (stockResult.next()) {
+                int stock = stockResult.getInt("product_stock");
+                if (stock < qty) {
+                    // Tampilkan notifikasi jika stok tidak mencukupi
+                    JOptionPane.showMessageDialog(this, "Stok tidak mencukupi untuk produk ID " + idProduk + ". Tersisa " + stock + " produk.", "Stok Tidak Cukup", JOptionPane.WARNING_MESSAGE);
+                    return; // Hentikan proses checkout
+                }
             }
+        }
+        
 
             // Masukkan data ke tabel transaksi
             String insertTransaksiQuery = "INSERT INTO transaksi (id_akun, tanggal_transaksi, total_harga) VALUES (?, ?, ?)";
